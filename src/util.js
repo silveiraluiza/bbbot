@@ -92,15 +92,17 @@ const checkImage = ({ width, height, lines }) => {
 const vote = victim => async page => {
   const userCard = await page.waitForXPath(users[victim]);
   await userCard.click();
+  await sleep(3000)
 };
 
 const revote = victim => async page => {
   await new Promise(resolve => setTimeout(resolve, 400));
   const retryBtn = await page.waitForXPath(XPathContents.revoteBtn);
-
+  await sleep(3000)
   await retryBtn.click();
 
   await new Promise(resolve => setTimeout(resolve, 400));
+  await sleep(3000)
   vote(victim)(page);
 };
 
